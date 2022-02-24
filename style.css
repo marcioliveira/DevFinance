@@ -9,6 +9,20 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.container {
+  width: min(90vw, 800px);
+  margin: auto;
+}
+
+/* ======Titles ======================*/
+h2 {
+  margin-top: 3.2rem;
+  margin-bottom: 0.8rem;
+  color: #363f5f;
+
+  font-weight: normal;
+}
+
 /* ==== Header ====================== */
 header {
   background: #2d4a22;
@@ -19,4 +33,10 @@ header {
 #logo {
   color: #fff;
   font-weight: 100;
+}
+
+/* ==== Balance ====================== */
+#balance h2 {
+  margin-top: -8rem;
+  color: white;
 }

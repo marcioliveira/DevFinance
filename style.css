@@ -13,6 +13,19 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Abreviação de screen reader somente */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .container {
   width: min(90vw, 800px);
   margin: auto;
@@ -40,9 +53,13 @@ header {
 }
 
 /* ==== Balance ====================== */
-#balance h2 {
+#balance {
   margin-top: -8rem;
+}
+
+#balance h2 {
   color: white;
+  margin-top: 0;
 }
 
 /* ==== Cards ======================== */
@@ -52,11 +69,17 @@ header {
   border-radius: 0.25rem;
 
   margin-bottom: 2rem;
+
+  color: var(--dark-blue);
 }
 
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {

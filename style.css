@@ -31,13 +31,28 @@ body {
   margin: auto;
 }
 
-/* ======Titles ======================*/
+/* ====== Titles ======================*/
 h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
   color: var(--dark-blue);
 
   font-weight: normal;
+}
+
+/* ====== Links & Buttons ============ */
+a {
+  color: #49aa26;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3dd705;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
 }
 
 /* ==== Header ====================== */

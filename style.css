@@ -114,6 +114,12 @@ header {
 }
 
 /* ==== Table ======================== */
+#transction {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
 #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
@@ -171,4 +177,17 @@ footer {
   color: var(--dark-blue);
 
   opacity: 0.6;
+}
+
+/* ===== Responsive ==================  */
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }

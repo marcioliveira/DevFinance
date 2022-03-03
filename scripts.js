@@ -41,6 +41,11 @@ const transactions = [
 
 const Transaction = {
   all: transactions,
+
+  add(transaction) {
+    Transaction.all.push(transaction);
+    App.reload();
+  },
   // Eu preciso somar as entradas
   // depois eu preciso somar as saídas e
   // remover das entradas o valor das saídas.
@@ -119,6 +124,10 @@ const DOM = {
       Transaction.total()
     );
   },
+
+  clearTransactions() {
+    DOM.transactionsContainer.innerHTML = "";
+  },
 };
 
 const Utils = {
@@ -144,8 +153,25 @@ const Utils = {
   },
 };
 
-transactions.forEach(function (transaction) {
-  DOM.addTransaction(transaction);
-});
+const App = {
+  init() {
+    Transaction.all.forEach((transaction) => {
+      DOM.addTransaction(transaction);
+    });
 
-DOM.updateBalance();
+    DOM.updateBalance();
+  },
+
+  reload() {
+    DOM.clearTransactions();
+    App.init();
+  },
+};
+App.init();
+
+Transaction.add({
+  id: 40,
+  description: "Alo2",
+  amount: 1000,
+  date: "24/02/2022",
+});

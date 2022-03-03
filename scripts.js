@@ -22,7 +22,7 @@ const transactions = [
   {
     id: 2,
     description: "Website",
-    amount: 500007,
+    amount: 600007,
     date: "23/01/2022",
   },
   {
@@ -45,13 +45,37 @@ const Transaction = {
   // remover das entradas o valor das saídas.
   // Assim eu terei o valor total
   incomes() {
-    //somar as entradas
+    let income = 0;
+    // pegar todas as transacoes
+    // para cada transacao
+    transactions.forEach((transaction) => {
+      // se ela for maior que zero
+      if (transaction.amount > 0) {
+        // somar a uma variavel e retornar a variavel
+        income += transaction.amount;
+      }
+    });
+    return income;
   },
+
   expenses() {
-    //somar as saidas
+    let expense = 0;
+    // pegar todas as transacoes
+    // para cada transacao
+    transactions.forEach((transaction) => {
+      // se ela for maior que zero
+      if (transaction.amount < 0) {
+        // somar a uma variavel e retornar a variavel
+        expense += transaction.amount;
+      }
+    });
+    return expense;
   },
+
   total() {
-    // entradas - saídas
+    // é incomes + expenses porque
+    // ja temos o sinal de negativo
+    return Transaction.incomes() + Transaction.expenses();
   },
 };
 
@@ -59,11 +83,13 @@ const Transaction = {
 // com os dados do JS as minhas transações do meu
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
+
   addTransaction(transaction, index) {
     const tr = document.createElement("tr");
     tr.innerHTML = DOM.innerHTMLTransaction(transaction);
     DOM.transactionsContainer.appendChild(tr);
   },
+
   innerHTMLTransaction(transaction) {
     const CSSclass = transaction.amount > 0 ? "income" : "expense";
 
@@ -79,6 +105,13 @@ const DOM = {
         </tr>
     `;
     return html;
+  },
+
+  updateBalance() {
+    document.getElementById("incomeDisplay").innerHTML = Transaction.incomes();
+    document.getElementById("expenseDisplay").innerHTML =
+      Transaction.expenses();
+    document.getElementById("totalDisplay").innerHTML = Transaction.total();
   },
 };
 
@@ -108,3 +141,5 @@ const Utils = {
 transactions.forEach(function (transaction) {
   DOM.addTransaction(transaction);
 });
+
+DOM.updateBalance();

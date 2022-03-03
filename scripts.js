@@ -40,6 +40,7 @@ const transactions = [
 ];
 
 const Transaction = {
+  all: transactions,
   // Eu preciso somar as entradas
   // depois eu preciso somar as saídas e
   // remover das entradas o valor das saídas.
@@ -48,7 +49,7 @@ const Transaction = {
     let income = 0;
     // pegar todas as transacoes
     // para cada transacao
-    transactions.forEach((transaction) => {
+    Transaction.all.forEach((transaction) => {
       // se ela for maior que zero
       if (transaction.amount > 0) {
         // somar a uma variavel e retornar a variavel
@@ -62,7 +63,7 @@ const Transaction = {
     let expense = 0;
     // pegar todas as transacoes
     // para cada transacao
-    transactions.forEach((transaction) => {
+    Transaction.all.forEach((transaction) => {
       // se ela for maior que zero
       if (transaction.amount < 0) {
         // somar a uma variavel e retornar a variavel

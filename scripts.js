@@ -14,25 +14,21 @@ const Modal = {
 
 const transactions = [
   {
-    id: 1,
     description: "Luz",
     amount: -50010,
     date: "23/01/2022",
   },
   {
-    id: 2,
     description: "Website",
     amount: 600007,
     date: "23/01/2022",
   },
   {
-    id: 3,
     description: "Internet",
     amount: -20000,
     date: "23/01/2022",
   },
   {
-    id: 4,
     description: "App",
     amount: 20000,
     date: "23/01/2022",
@@ -44,6 +40,11 @@ const Transaction = {
 
   add(transaction) {
     Transaction.all.push(transaction);
+    App.reload();
+  },
+
+  remove(index) {
+    Transaction.all.splice(index, 1);
     App.reload();
   },
   // Eu preciso somar as entradas
@@ -101,7 +102,7 @@ const DOM = {
 
     const amount = Utils.formatCurrency(transaction.amount);
 
-    const html = `
+    const html = /*html*/ `
         <td class="description">${transaction.description}</td>
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
@@ -169,9 +170,4 @@ const App = {
 };
 App.init();
 
-Transaction.add({
-  id: 40,
-  description: "Alo2",
-  amount: 1000,
-  date: "24/02/2022",
-});
+Transaction.remove(2);

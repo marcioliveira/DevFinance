@@ -200,6 +200,12 @@ const Form = {
     };
   },
 
+  clearFields() {
+    Form.description.value = "";
+    Form.amount.value = "";
+    Form.date.value = "";
+  },
+
   submit(event) {
     event.preventDefault();
 
@@ -211,7 +217,9 @@ const Form = {
 
       // salvar
       Transaction.add(transaction);
+
       // apagar os dados do formulario
+      Form.clearFields();
       // modal feche
       // atualizar a aplicacao
     } catch (error) {

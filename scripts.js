@@ -12,31 +12,29 @@ const Modal = {
   },
 };
 
-const transactions = [
-  {
-    description: "Luz",
-    amount: -50010,
-    date: "23/01/2022",
-  },
-  {
-    description: "Website",
-    amount: 600007,
-    date: "23/01/2022",
-  },
-  {
-    description: "Internet",
-    amount: -20000,
-    date: "23/01/2022",
-  },
-  {
-    description: "App",
-    amount: 20000,
-    date: "23/01/2022",
-  },
-];
-
 const Transaction = {
-  all: transactions,
+  all: [
+    {
+      description: "Luz",
+      amount: -50010,
+      date: "23/01/2022",
+    },
+    {
+      description: "Website",
+      amount: 600007,
+      date: "23/01/2022",
+    },
+    {
+      description: "Internet",
+      amount: -20000,
+      date: "23/01/2022",
+    },
+    {
+      description: "App",
+      amount: 20000,
+      date: "23/01/2022",
+    },
+  ],
 
   add(transaction) {
     Transaction.all.push(transaction);
@@ -86,8 +84,6 @@ const Transaction = {
   },
 };
 
-// Eu preciso substituir os dados do HTML
-// com os dados do JS as minhas transações do meu
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
 
@@ -154,6 +150,53 @@ const Utils = {
   },
 };
 
+const Form = {
+  description: document.querySelector("input#description"),
+  amount: document.querySelector("input#amount"),
+  date: document.querySelector("input#date"),
+
+  getValues() {
+    return {
+      description: Form.description.value,
+      amount: Form.amount.value,
+      date: Form.date.value,
+    };
+  },
+
+  formatData() {
+    console.log("formatar os dados");
+  },
+
+  validateFields() {
+    const { description, amount, date } = Form.getValues();
+    if (
+      description.trim() === "" ||
+      amount.trim() === "" ||
+      date.trim() === ""
+    ) {
+      throw new Error("Por favor preencha todos os campos");
+    }
+  },
+
+  submit(event) {
+    event.preventDefault();
+
+    try {
+      Form.validateFields();
+
+      // formatar os dados para Salvar
+      // Form.formatData();
+
+      // salvar
+      // apagar os dados do formulario
+      // modal feche
+      // atualizar a aplicacao
+    } catch (error) {
+      alert(error.message);
+    }
+  },
+};
+
 const App = {
   init() {
     Transaction.all.forEach((transaction) => {
@@ -168,6 +211,5 @@ const App = {
     App.init();
   },
 };
-App.init();
 
-Transaction.remove(2);
+App.init();

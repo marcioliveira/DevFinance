@@ -128,6 +128,18 @@ const DOM = {
 };
 
 const Utils = {
+  formatAmount(value) {
+    value = Number(value) * 100;
+
+    return value;
+  },
+
+  formatDate(date) {
+    const splittedDate = date.split("-");
+
+    return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
+  },
+
   formatCurrency(value) {
     const signal = Number(value) < 0 ? "-" : "";
 
@@ -163,10 +175,6 @@ const Form = {
     };
   },
 
-  formatData() {
-    console.log("formatar os dados");
-  },
-
   validateFields() {
     const { description, amount, date } = Form.getValues();
     if (
@@ -178,6 +186,20 @@ const Form = {
     }
   },
 
+  formatValues() {
+    let { description, amount, date } = Form.getValues();
+
+    amount = Utils.formatAmount(amount);
+
+    date = Utils.formatDate(date);
+
+    return {
+      description,
+      amount,
+      date,
+    };
+  },
+
   submit(event) {
     event.preventDefault();
 
@@ -185,7 +207,7 @@ const Form = {
       Form.validateFields();
 
       // formatar os dados para Salvar
-      // Form.formatData();
+      const transaction = Form.formatValues();
 
       // salvar
       // apagar os dados do formulario

@@ -210,6 +210,7 @@ const Form = {
       const transaction = Form.formatValues();
 
       // salvar
+      Transaction.add(transaction);
       // apagar os dados do formulario
       // modal feche
       // atualizar a aplicacao
